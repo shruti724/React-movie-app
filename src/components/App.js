@@ -3,7 +3,26 @@ import {data} from '../data';
 import Navbar from './Navbar';
 import MovieCard from './MovieCard'
 
-function App() {
+
+class App extends React.Component {
+  componentDidMount(){
+    // Array destructuring = this.props.store.dispatch({}) to store.dispatch({})
+    const { store } = this.props;
+
+    // subscribe() function of store takes function as an argumant.
+    store.subscribe(()=>{
+      console.log('UPDATED');
+      this.forceUpdate();
+    }); 
+
+    store.dispatch({
+      type: "ADD_MOVIES",
+      movies: data,
+    });
+    console.log("STATE", this.props.store.getState());
+  }
+  render(){const movies = this.props.store.getState()
+    console.log('RENDER');
   return (
     <div className="App">
       <Navbar/>
@@ -14,13 +33,13 @@ function App() {
         </div>
         <div className="list">
           {/* index will give the index of that particular movie in my data array */}
-         {data.map((movie, index) => (
+         {movies.map((movie, index) => (
           <MovieCard movie={movie} key={`movies = ${index}`}/>
          ))}
         </div>
       </div>
     </div>
-  );
+  );}
 }
 
 export default App;
