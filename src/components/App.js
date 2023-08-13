@@ -13,8 +13,9 @@ function App() {
           <div className="tab">Favourites</div>
         </div>
         <div className="list">
-         {data.map(movie => (
-          <MovieCard movie={movie}/>
+          {/* index will give the index of that particular movie in my data array */}
+         {data.map((movie, index) => (
+          <MovieCard movie={movie} key={`movies = ${index}`}/>
          ))}
         </div>
       </div>
