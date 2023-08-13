@@ -1,4 +1,4 @@
-import {ADD_MOVIES} from '../actions';
+import { ADD_MOVIES, ADD_FAVOURIE } from "../actions";
 
 // Changing state from a list to an object.
 const initialMoviesState = {
@@ -8,13 +8,30 @@ const initialMoviesState = {
 
 // Here state is the default state of the store.
 export default function movies (state = initialMoviesState, action) {
-    if (action.type === ADD_MOVIES){
-        return {
-          ...state,
-          list: action.movies,
-        };
+    // In react community we avoid if else instead we use switch case.
+
+    // if (action.type === ADD_MOVIES){
+    //     return {
+    //       ...state,
+    //       list: action.movies,
+    //     };
+    // }
+    // return state;
+
+    switch (action.type){
+        case ADD_MOVIES:
+            return {
+                ...state,
+                list: action.movies,
+        }
+        case ADD_FAVOURIE:
+            return{
+                ...state,
+                favourites: [action.movie, ...state.favourites]
+            }
+        default:
+            return state; 
     }
-    return state;
 }
 
 // internally movies reducer is called like this:

@@ -17,6 +17,7 @@
 
 // these veriables are called action types.
 export const ADD_MOVIES = 'ADD_MOVIES';
+export const ADD_FAVOURIE = "ADD_FAVOURIE";
 
 
 // These functions are called action creator.
@@ -24,6 +25,12 @@ export function addMovies(movies){
     return {
       type: "ADD_MOVIES",
       movies: movies,
+    };
+}
+export function addFavourtie(movie){
+    return {
+      type: "ADD_FAVOURIE",
+      movie,
     };
 }
 
