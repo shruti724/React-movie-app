@@ -19,8 +19,8 @@ class App extends React.Component {
     store.dispatch(addMovies(data));
     console.log("STATE", this.props.store.getState());
   }
-  render(){const movies = this.props.store.getState()
-    console.log('RENDER');
+  render(){const {list} = this.props.store.getState() // {list: [], favourites: []}
+    console.log('RENDER', this.props.store.getState());
   return (
     <div className="App">
       <Navbar/>
@@ -31,7 +31,7 @@ class App extends React.Component {
         </div>
         <div className="list">
           {/* index will give the index of that particular movie in my data array */}
-         {movies.map((movie, index) => (
+         {list.map((movie, index) => (
           <MovieCard movie={movie} key={`movies = ${index}`}/>
          ))}
         </div>

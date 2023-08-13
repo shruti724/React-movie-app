@@ -1,9 +1,18 @@
 import {ADD_MOVIES} from '../actions';
 
+// Changing state from a list to an object.
+const initialMoviesState = {
+    list: [],
+    favourites: []
+}
+
 // Here state is the default state of the store.
-export default function movies (state = [], action) {
+export default function movies (state = initialMoviesState, action) {
     if (action.type === ADD_MOVIES){
-        return action.movies;
+        return {
+          ...state,
+          list: action.movies,
+        };
     }
     return state;
 }
