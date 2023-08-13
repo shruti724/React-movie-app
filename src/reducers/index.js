@@ -1,7 +1,8 @@
-// Here state is the default state of the store.
+import {ADD_MOVIES} from '../actions';
 
+// Here state is the default state of the store.
 export default function movies (state = [], action) {
-    if (action.type === 'ADD_MOVIES'){
+    if (action.type === ADD_MOVIES){
         return action.movies;
     }
     return state;

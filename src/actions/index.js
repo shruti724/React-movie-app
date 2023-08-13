@@ -13,3 +13,19 @@
 // {
 //     type: 'DELETE_MOVIES'
 // }
+
+
+// these veriables are called action types.
+export const ADD_MOVIES = 'ADD_MOVIES';
+
+
+// These functions are called action creator.
+export function addMovies(movies){
+    return {
+      type: "ADD_MOVIES",
+      movies: movies,
+    };
+}
+
+// Generally in React community we follow this pattern, we use action creator for returning actions and action types as variable.
+
