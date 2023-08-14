@@ -1,4 +1,4 @@
-import { ADD_MOVIES, ADD_FAVOURIE, REMOVE_FROM_FAVOURITES } from "../actions";
+import { ADD_MOVIES, ADD_FAVOURIE, REMOVE_FROM_FAVOURITES, SET_SHOW_FAVOURITES } from "../actions";
 
 // Changing state from a list to an object.
 const initialMoviesState = {
@@ -36,7 +36,13 @@ export default function movies (state = initialMoviesState, action) {
             return{
                 ...state,
                 favourites: filteredArray
-            }    
+            }   
+        case SET_SHOW_FAVOURITES:{
+            return {
+                ...state,
+                showFavourites: action.val
+            }
+        }
         default:
             return state; 
     }

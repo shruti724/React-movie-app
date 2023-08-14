@@ -19,6 +19,8 @@
 export const ADD_MOVIES = 'ADD_MOVIES';
 export const ADD_FAVOURIE = "ADD_FAVOURIE";
 export const REMOVE_FROM_FAVOURITES = "REMOVE_FROM_FAVOURITES";
+export const SET_SHOW_FAVOURITES = "SET_SHOW_FAVOURITES"; 
+
 
 // These functions are called action creator.
 export function addMovies(movies){
@@ -40,6 +42,14 @@ export function removeFromFavourites(movie){
       movie
     };
 }
+
+export function setShowFavourites(val){
+    return {
+      type: SET_SHOW_FAVOURITES,
+      val,
+    };
+}
+
 
 // Generally in React community we follow this pattern, we use action creator for returning actions and action types as variable.
 
