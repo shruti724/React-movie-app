@@ -18,7 +18,7 @@
 // these veriables are called action types.
 export const ADD_MOVIES = 'ADD_MOVIES';
 export const ADD_FAVOURIE = "ADD_FAVOURIE";
-
+export const REMOVE_FROM_FAVOURITES = "REMOVE_FROM_FAVOURITES";
 
 // These functions are called action creator.
 export function addMovies(movies){
@@ -31,6 +31,13 @@ export function addFavourtie(movie){
     return {
       type: "ADD_FAVOURIE",
       movie,
+    };
+}
+
+export function removeFromFavourites(movie){
+    return {
+      type: REMOVE_FROM_FAVOURITES,
+      movie
     };
 }
 
