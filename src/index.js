@@ -1,7 +1,7 @@
 // Package imports
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 
 // File imports
 import './index.css';
@@ -9,7 +9,22 @@ import App from './components/App';
 import movies from './reducers';
 import rootReducer  from './reducers';
 
-const store = createStore(rootReducer);
+
+// Curried Function concept
+// function logger(obj, next, action)
+// logger(obj)(next)(action) 
+const logger = function({dispatch, getstate}){
+  return function (next){
+    return function (action){
+      // middleware code
+      console.log('ACTION_TYPE = ', action.type);
+      next(action);
+    }
+  }
+}
+
+
+const store = createStore(rootReducer, applyMiddleware(logger));
 console.log('store',store);
 // getState function of store
 // BEFORE STATE is the state before we send the action

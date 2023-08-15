@@ -66,14 +66,14 @@ export function search (state = initialSearchState, action){
     return state;
 };
 
-const initialRootState = {
-    movies: initialMoviesState,
-    search: initialSearchState
-}
+// const initialRootState = {
+//     movies: initialMoviesState,
+//     search: initialSearchState
+// }
 
 // For making our store more scalable.
 // Also we don't need to create this method as his method is already created by Redux to use. Internally Redux is combining like this only.
- 
+
 // export default function rootReducer (state = initialRootState, action){
 //     return {
 //         movies: movies(state.movies, action),
