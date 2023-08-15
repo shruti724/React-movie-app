@@ -1,3 +1,4 @@
+import { combineReducers } from "redux";
 import { ADD_MOVIES, ADD_FAVOURIE, REMOVE_FROM_FAVOURITES, SET_SHOW_FAVOURITES,
 ADD_MOVIE_TO_LIST } from "../actions";
 
@@ -70,10 +71,18 @@ const initialRootState = {
     search: initialSearchState
 }
 
+// For making our store more scalable.
+// Also we don't need to create this method as his method is already created by Redux to use. Internally Redux is combining like this only.
+ 
+// export default function rootReducer (state = initialRootState, action){
+//     return {
+//         movies: movies(state.movies, action),
+//         search: search(state.search, action)
+//     }
+// }
 
-export default function rootReducer (state = initialRootState, action){
-    return {
-        movies: movies(state.movies, action),
-        search: search(state.search, action)
-    }
-}
+// As combineReducers takes object as an argument. Here since the name is same we can use short hand insted of movies: movies, movies only. 
+export default combineReducers({
+    movies,
+    search
+});
