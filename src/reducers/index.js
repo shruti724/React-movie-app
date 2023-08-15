@@ -1,13 +1,15 @@
-import { ADD_MOVIES, ADD_FAVOURIE, REMOVE_FROM_FAVOURITES, SET_SHOW_FAVOURITES } from "../actions";
+import { ADD_MOVIES, ADD_FAVOURIE, REMOVE_FROM_FAVOURITES, SET_SHOW_FAVOURITES,
+ADD_MOVIE_TO_LIST } from "../actions";
 
 // Changing state from a list to an object.
 const initialMoviesState = {
     list: [],
-    favourites: []
+    favourites: [],
+    showFavourites: false
 }
 
 // Here state is the default state of the store.
-export default function movies (state = initialMoviesState, action) {
+export function movies (state = initialMoviesState, action) {
     // In react community we avoid if else instead we use switch case.
 
     // if (action.type === ADD_MOVIES){
@@ -54,3 +56,24 @@ export default function movies (state = initialMoviesState, action) {
 // o/p: STATE: []
 
 // Redux is calling out movies reducers like this and if it is undefine, our state will take the initial emty array getValue.
+
+
+const initialSearchState = {
+    result: {}
+}
+export function search (state = initialSearchState, action){
+    return state;
+};
+
+const initialRootState = {
+    movies: initialMoviesState,
+    search: initialSearchState
+}
+
+
+export default function rootReducer (state = initialRootState, action){
+    return {
+        movies: movies(state.movies, action),
+        search: search(state.search, action)
+    }
+}

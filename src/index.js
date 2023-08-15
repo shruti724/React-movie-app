@@ -7,8 +7,9 @@ import { createStore } from "redux";
 import './index.css';
 import App from './components/App';
 import movies from './reducers';
+import rootReducer  from './reducers';
 
-const store = createStore(movies);
+const store = createStore(rootReducer);
 console.log('store',store);
 // getState function of store
 // BEFORE STATE is the state before we send the action
