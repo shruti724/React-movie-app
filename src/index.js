@@ -13,14 +13,20 @@ import rootReducer  from './reducers';
 // Curried Function concept
 // function logger(obj, next, action)
 // logger(obj)(next)(action) 
-const logger = function({dispatch, getstate}){
-  return function (next){
-    return function (action){
-      // middleware code
-      console.log('ACTION_TYPE = ', action.type);
-      next(action);
-    }
-  }
+// const logger = function({dispatch, getstate}){
+//   return function (next){
+//     return function (action){
+//       // middleware code
+//       console.log('ACTION_TYPE = ', action.type);
+//       next(action);
+//     }
+//   }
+// }
+
+// Modifying middleware (Cleaner code for middleware)
+const logger = ({dispatch, getstate})=>(next)=>(action)=>{
+  console.log("ACTION_TYPE = ", action.type);
+  next(action);
 }
 
 
