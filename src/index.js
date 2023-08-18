@@ -1,12 +1,15 @@
 // Package imports
 import React from 'react';
+// import { Provider } from "react-redux";
 import ReactDOM from 'react-dom/client';
 import { createStore, applyMiddleware } from "redux";
+import thunk from 'redux-thunk'
+// import thunk from 'redux-thunk';//to chk
 
 // File imports
 import './index.css';
 import App from './components/App';
-import movies from './reducers';
+// import movies from './reducers';
 import rootReducer  from './reducers';
 
 
@@ -25,12 +28,28 @@ import rootReducer  from './reducers';
 
 // Modifying middleware (Cleaner code for middleware)
 const logger = ({dispatch, getstate})=>(next)=>(action)=>{
-  console.log("ACTION_TYPE = ", action.type);
+  // logger code
+  if (typeof action !== 'function'){
+    console.log("ACTION_TYPE = ", action.type);
+  }
+  
   next(action);
 }
 
+// This middleware codes is not needed as we have redux-thunk package is doing the same.
 
-const store = createStore(rootReducer, applyMiddleware(logger));
+// const thunk =
+//   ({ dispatch, getstate }) =>
+//   (next) =>
+//   (action) => {
+//     if (typeof action === 'function') {
+//       action(dispatch)
+//       return;
+//     }
+//     next(action);
+//   };
+
+const store = createStore(rootReducer, applyMiddleware(logger, thunk));
 console.log('store',store);
 // getState function of store
 // BEFORE STATE is the state before we send the action
